@@ -39,6 +39,27 @@
 **HEAD** — один из служебных файлов папки .git
 *Он указывает на коммит, который сделан последним (то есть на самый новый)*
 
+### Статусы файлов в Git
+
+- untracked  - файл добавлен (Git знает, но не следит за изменениями в нём)
+- staged + tracked - после выполнения git add
+- modified (+untracked/tracked) - файл был изменен
+- tracked  - файл закоммичен
+
+```mermaid
+flowchart LR
+    U["untracked<br/>(неотслеживаемый)"]
+    M["modified<br/>(изменённый)"]
+    S["staged<br/>(в списке на коммит)<br/>+ tracked"]
+    T["tracked<br/>(отслеживаемый)"]
+
+    U -->|git add| S
+    M -->|git add| S
+    S -->|git commit| T
+    S -->|Изменения| M
+    T -->|Изменения| M
+```
+
 [Мой проект на GitHub](https://github.com/dasha-omely/second-project-dasha)
 
 ---
